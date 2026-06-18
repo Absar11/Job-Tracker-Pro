@@ -1,100 +1,261 @@
-# Job Tracker Pro — Production-Ready MERN Stack Application
+# Job Tracker Pro
 
-Job Tracker Pro is a fully-featured, production-ready full-stack (MERN) platform built with **React (Vite)**, **Redux Toolkit**, **Express.js**, and **MongoDB with Mongoose**. It helps job seekers organize, track, and analyze their job applications, interview loops, rejections, and career metrics from a single modern SaaS interface.
+A production-ready MERN Stack application that helps job seekers manage, track, and analyze their job applications from a single dashboard.
 
 ---
 
-## Technical Highlights & Features
+## Features
 
-### 🛡️ Secure Authorization Block (RBAC)
-- **JWT Session Persistence:** Secure user registration, logins, and session restoration.
-- **Custom Hashing:** Password hashing using standard, safe `bcryptjs` cycles.
+### Authentication & Security
 
-### 💼 Career Application Pipeline
-- **Unified CRUD Core:** Add, inspect, modify, and delete job details.
-- **Dynamic Search & Filtration:** Custom filters for status, company designations, location, and sorting by dates.
-- **Full Pagination:** Optimized scroll limits, next/prev controls, and item counts reporting.
+* User Registration
+* User Login
+* JWT Authentication
+* Secure Password Hashing using bcryptjs
+* Protected Routes
+* Session Persistence
+* Profile Management
 
-### 📊 SaaS Analytics Visuals
-- **Dynamic KPI Cards:** High-contrast widgets for Total Applications, Scheduled Interview Loops, Cut Rejection Rates, and Offers.
-- **React-ChartJS Integrations:**
-  - **Monthly Applications Timeline Chart:** Tracks application frequency over months.
-  - **Status distribution Doughnut Index:** Breaks down applications by category.
-  - **Interview vs Rejection Pie Chart:** Highlights ratio conversions.
+### Job Application Management
 
-### ⚙️ Senior-Level Hybrid Persistence Engine
-- **MongoDB (Production ready):** Integrates standard Mongoose model schemas for production connections.
-- **SaaS-Local Fallback (Zero Config):** If `MONGODB_URI` is not present, the server automatically boots down to a persistent file-based JSON database (`/data/db.json`), emulates search indexes, alphabetical sorting, paginations, and MongoDB aggregator pipelines with 100% precision. **This guarantees the application remains fully functional out-of-the-box inside sandboxed preview portals!**
+* Create Job Applications
+* Edit Job Applications
+* Delete Job Applications
+* View Job Details
+* Search Jobs
+* Filter Jobs by Status
+* Sort Jobs by Date
+* Pagination Support
+
+### Analytics Dashboard
+
+* Total Applications
+* Total Interviews
+* Total Rejections
+* Total Offers
+
+Interactive Charts:
+
+* Monthly Applications Trend
+* Status Distribution
+* Interview vs Rejection Ratio
+
+### Database & Backend
+
+* MongoDB with Mongoose
+* RESTful API Architecture
+* Dashboard Analytics using Aggregation Pipelines
+* Error Handling Middleware
+* Modular Folder Structure
+
+---
+
+## Tech Stack
+
+### Frontend
+
+* React.js
+* Redux Toolkit
+* React Router DOM
+* Tailwind CSS
+* Chart.js
+* Axios
+
+### Backend
+
+* Node.js
+* Express.js
+
+### Database
+
+* MongoDB
+* Mongoose
+
+### Authentication
+
+* JWT
+* bcryptjs
+
+### Tools
+
+* Git
+* GitHub
+* Postman
+* Vite
 
 ---
 
 ## Project Structure
 
 ```bash
-├── src/
-│   ├── backend/                # Server-Side Backend Code
-│   │   ├── config/             # DB settings
-│   │   ├── controllers/        # Auth, Jobs, and Admin Controllers (15+ endpoints)
-│   │   ├── middleware/         # authentication & RBAC middleware guards
-│   │   ├── models/             # User and Job Mongoose schemas
-│   │   ├── routes/             # REST route mappings
-│   │   └── services/           # DB synchronization & fallback services
-│   ├── components/             # Reusable UI widgets (Skeletons, Charts, Toasters)
-│   ├── layouts/                # Desktop Drawer rails and Hamburgers
-│   ├── pages/                  # Auth Gateway, Dashboards, Lists, Forms
-│   ├── redux/                  # Redux Toolkits slices and global store
-│   ├── services/               # custom Fetch networks client with interceptors
-│   ├── App.tsx                 # Routing manager & Global listeners
-│   ├── index.css               # typography & styling variables
-│   └── types.ts                # TypeScript interfaces contracts
-├── server.ts                   # Unified Express/Vite Integration Server
-├── package.json                # Project dependencies and building scripts
-└── .env.example                # Templates of server secrets
+src
+├── backend
+│   ├── config
+│   ├── controllers
+│   ├── middleware
+│   ├── models
+│   ├── routes
+│   └── services
+│
+├── components
+├── layouts
+├── pages
+├── redux
+├── services
+├── App.jsx
+└── index.css
+
+server.js
+package.json
+.env
 ```
 
 ---
 
-## 15+ REST APIs Directory
+## API Endpoints
 
-### Authentication Gateway (`/api/auth`)
-* `POST  /register` - Create user profile with custom role (`User`).
-* `POST  /login` - Verify password and return bearer session token.
-* `GET   /profile` - Collect active user context metrics (Protected).
-* `PUT   /profile` - Update user description, name, or profile picture (Protected).
+### Authentication APIs
 
-### Job application Center (`/api/jobs`)
-* `POST  /` - Insert a job application record (Protected).
-* `GET   /` - Search, filter, page, or sort personal applications (Protected).
-* `GET   /analytics` - Group and count pipeline stats for dashboard charts (Protected).
-* `GET   /:id` - Load unique details of an individual listing (Protected).
-* `PUT   /:id` - Save updates to a specific record (Protected).
-* `DELETE /:id` - Erase individual application records from tracking (Protected).
+Base Route:
+
+```http
+/api/auth
+```
+
+| Method | Endpoint  | Description         |
+| ------ | --------- | ------------------- |
+| POST   | /register | Register New User   |
+| POST   | /login    | Login User          |
+| GET    | /profile  | Get User Profile    |
+| PUT    | /profile  | Update User Profile |
 
 ---
 
-## Installation & Launch Guidelines
+### Job APIs
 
-### 1. Configure Secrets
-Initialize keys in your environment (or configure them via `.env` files):
+Base Route:
+
+```http
+/api/jobs
+```
+
+| Method | Endpoint   | Description            |
+| ------ | ---------- | ---------------------- |
+| POST   | /          | Create Job Application |
+| GET    | /          | Get All Jobs           |
+| GET    | /analytics | Dashboard Analytics    |
+| GET    | /:id       | Get Single Job         |
+| PUT    | /:id       | Update Job             |
+| DELETE | /:id       | Delete Job             |
+
+---
+
+## Dashboard Analytics
+
+### KPI Cards
+
+* Total Applications
+* Total Interviews
+* Total Rejections
+* Total Offers
+
+### Charts
+
+#### Monthly Applications Trend
+
+Displays month-wise application activity.
+
+#### Status Distribution
+
+Shows application breakdown by status:
+
+* Applied
+* Online Assessment
+* Interview Scheduled
+* Rejected
+* Offer Received
+* Selected
+
+#### Interview vs Rejection Ratio
+
+Visual comparison between interview conversions and rejected applications.
+
+---
+
+## Environment Variables
+
+Create a `.env` file in the root directory:
+
 ```env
-# MongoDB database connection string (vacate to run in Auto-File-Fallback)
-MONGODB_URI="mongodb+srv://..."
-
-# Secure JWT signing secret
-JWT_SECRET="super_secret_jwt_key_job_tracker_pro_2026"
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
 ```
 
-### 2. Operational Procedures
+---
+
+## Installation
+
+### Clone Repository
+
 ```bash
-# Install NPM dependencies
+git clone <repository-url>
+cd job-tracker-pro
+```
+
+### Install Dependencies
+
+```bash
 npm install
+```
 
-# Start the application in development (runs Express + Vite Proxy)
+### Run Development Server
+
+```bash
 npm run dev
+```
 
-# Compile production assets (Front-end SPA + Back-end esbuild)
+### Build Application
+
+```bash
 npm run build
+```
 
-# Start the compiled production assets
+### Start Production Server
+
+```bash
 npm run start
 ```
+
+---
+
+## Resume Highlights
+
+* Developed a production-ready MERN Stack application.
+* Implemented JWT-based authentication and protected routes.
+* Built RESTful APIs for job management and analytics.
+* Designed MongoDB schemas and aggregation pipelines.
+* Developed interactive analytics dashboards using Chart.js.
+* Implemented search, filtering, sorting, and pagination.
+* Integrated Redux Toolkit for global state management.
+
+---
+
+## Future Enhancements
+
+* Resume Upload & Management
+* Interview Reminder System
+* Company-wise Analytics
+* Email Notifications
+* AI-based Resume Analysis
+* Job Recommendation Engine
+
+---
+
+## Author
+
+**Absar Ahmad**
+
+* LinkedIn: https://www.linkedin.com/in/absar10/
+* GitHub: https://github.com/Absar11
+* Project Live Link: https://job-tracker-pro-9fq5.onrender.com
+* Portfolio: https://portfolio-mern-app-s6bu.onrender.com/
