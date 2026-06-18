@@ -1,0 +1,6 @@
+{
+  "name": "Job Tracker Pro",
+  "description": "A production-ready SaaS dashboard for tracking and managing job applications, interviewing cycles, and career analytics with RBAC authorization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
