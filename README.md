@@ -9,7 +9,6 @@ Job Tracker Pro is a fully-featured, production-ready full-stack (MERN) platform
 ### 🛡️ Secure Authorization Block (RBAC)
 - **JWT Session Persistence:** Secure user registration, logins, and session restoration.
 - **Custom Hashing:** Password hashing using standard, safe `bcryptjs` cycles.
-- **Role-Based Access Control (RBAC):** Middleware-based route authorization supporting `User` and `Admin` groups.
 
 ### 💼 Career Application Pipeline
 - **Unified CRUD Core:** Add, inspect, modify, and delete job details.
@@ -32,8 +31,6 @@ Job Tracker Pro is a fully-featured, production-ready full-stack (MERN) platform
 ## Project Structure
 
 ```bash
-├── data/                       # Local database folder
-│   └── db.json                 # Auto-generated file persistence database
 ├── src/
 │   ├── backend/                # Server-Side Backend Code
 │   │   ├── config/             # DB settings
@@ -60,7 +57,7 @@ Job Tracker Pro is a fully-featured, production-ready full-stack (MERN) platform
 ## 15+ REST APIs Directory
 
 ### Authentication Gateway (`/api/auth`)
-* `POST  /register` - Create user profile with custom role (`User` or `Admin`).
+* `POST  /register` - Create user profile with custom role (`User`).
 * `POST  /login` - Verify password and return bearer session token.
 * `GET   /profile` - Collect active user context metrics (Protected).
 * `PUT   /profile` - Update user description, name, or profile picture (Protected).
@@ -72,10 +69,6 @@ Job Tracker Pro is a fully-featured, production-ready full-stack (MERN) platform
 * `GET   /:id` - Load unique details of an individual listing (Protected).
 * `PUT   /:id` - Save updates to a specific record (Protected).
 * `DELETE /:id` - Erase individual application records from tracking (Protected).
-
-### Administration Module (`/api/admin`)
-* `GET   /stats` - Pull total system metrics, registered list sum, and statuses (Admin Required).
-* `GET   /users` - Inspect registration profiles list and roles (Admin Required).
 
 ---
 
